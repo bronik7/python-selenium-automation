@@ -21,7 +21,7 @@ def input_search(context, search_word):
     search.send_keys(search_word)
     sleep(4)
 
-cXcc
+
 @when('Click on search icon')
 def click_search_icon(context):
     context.driver.find_element(*SEARCH_SUBMIT).click()
