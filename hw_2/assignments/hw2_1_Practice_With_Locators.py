@@ -52,7 +52,7 @@ def validate_condtion_of_use_link():
             new_window=handle
             break
     amazon_sign_in.driver.switch_to.window(new_window)
-    assert "508088" in amazon.get_current_url()
+    assert "508088" in amazon.get_current_url() # same url as condition of privacy different reference id
     amazon.close_browser()
 
 
@@ -68,7 +68,7 @@ def validate_condtion_of_privacy_link():
             new_window=handle
             break
     amazon_sign_in.driver.switch_to.window(new_window)
-    assert "468496" in amazon.get_current_url()
+    assert "468496" in amazon.get_current_url() # same url as condition of use different reference id
     amazon.close_browser()
 
 
