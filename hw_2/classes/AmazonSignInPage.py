@@ -1,7 +1,3 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from hw_2.AmazonMainPage import Amazon
-
 
 class SignIn:
     AmazonLogo = "//a[@class='a-link-nav-icon']"

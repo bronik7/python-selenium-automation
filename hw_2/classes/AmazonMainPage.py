@@ -6,9 +6,15 @@ from selenium.webdriver.common.keys import Keys
 class Amazon:
     SignInPopUpButton = "//*[@id='nav-signin-tooltip']/a/span"
     URL = "http://www.amazon.com"
+    NavigationMenuButton ="//a[@id='nav-hamburger-menu']"
+    HelpFromNavigationMenu = "//div[@id='hmenu-canvas']//div[@id='hmenu-content']//ul[@class='hmenu  hmenu-visible']/li[45]"
 
     def __init__(self):
         self.driver = webdriver.Chrome()
+
+    def open_browser_and_naviate_to_amazon(self):
+        self.driver.maximize_window()
+        self.driver.get(self.URL)
 
     def open_browser_and_navigate_to_amazon_sign_in_url(self):
         self.driver.maximize_window()
@@ -22,6 +28,11 @@ class Amazon:
 
     def get_current_url(self):
         return self.driver.current_url
+
+    def help_from_left_menu_click(self):
+        self.driver.find_element_by_xpath(self.NavigationMenuButton).click()
+        v = self.driver.find_element_by_xpath(self.HelpFromNavigationMenu)
+        self.driver.find_element_by_xpath(self.HelpFromNavigationMenu).click()
 
     def close_browser(self):
         self.driver.quit()

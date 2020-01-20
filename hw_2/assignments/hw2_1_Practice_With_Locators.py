@@ -1,5 +1,5 @@
-from hw_2.AmazonMainPage import Amazon
-from hw_2.AmazonSignInPage import SignIn
+from hw_2.classes.AmazonMainPage import Amazon
+from hw_2.classes.AmazonSignInPage import SignIn
 from time import sleep
 
 
