@@ -12,6 +12,8 @@ class SignIn:
     ForgotPassword = "//div[@class='a-expander-content a-expander-inline-content a-expander-inner a-expander-content-expanded']//a[@class='a-link-normal']"
     OtherIssues = "//div[@class='a-row a-expander-container a-expander-inline-container']//a[@id='ap-other-signin-issues-link']"
     CreateYourAmazonAccount ="//span['@class=a-button a-button-span12 a-button-base']//span['@class=a-button-inner']//a['@id=createAccountSubmit']"
+    ConditionOfUseLink =  "//div[@class='a-section a-spacing-small a-text-center a-size-mini']//a[@class='a-link-normal']"
+    PrivateNoticeLink = "//div[@class='a-section a-spacing-small a-text-center a-size-mini']/a[@class='a-link-normal'][2]"
 
     def __init__(self, driver):
         self.driver = driver
@@ -34,3 +36,8 @@ class SignIn:
     def click_create_your_amazon_account_button(self):
         self.driver.find_element_by_xpath(self.CreateYourAmazonAccount).click()
 
+    def click_get_condition_of_use_link(self):
+        self.driver.find_element_by_xpath(self.ConditionOfUseLink).click()
+
+    def click_privacy_notice_link(self):
+        self.driver.find_element_by_xpath(self.PrivateNoticeLink).click()

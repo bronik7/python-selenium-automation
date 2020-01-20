@@ -3,7 +3,7 @@ from hw_2.AmazonSignInPage import SignIn
 from time import sleep
 
 
-def find_amazon_logo():
+def validate_amazon_logo():
     amazon = Amazon()
     amazon.open_browser_and_navigate_to_amazon_sign_in_url()
     amazon_sign_in = SignIn(amazon.driver)
@@ -38,12 +38,48 @@ def validate_create_your_amazon_account():
     amazon_sign_in = SignIn(amazon.driver)
     amazon_sign_in.click_create_your_amazon_account_button()
     assert "register" in amazon.get_current_url()
+    amazon.close_browser()
+
+def validate_condtion_of_use_link():
+    amazon = Amazon()
+    amazon.open_browser_and_navigate_to_amazon_sign_in_url()
+    amazon_sign_in = SignIn(amazon.driver)
+    amazon_sign_in.click_get_condition_of_use_link()
+    current_page= amazon.driver.current_window_handle
+    new_window= None
+    for handle in amazon.driver.window_handles:
+        if handle!= current_page:
+            new_window=handle
+            break
+    amazon_sign_in.driver.switch_to.window(new_window)
+    assert "508088" in amazon.get_current_url()
+    amazon.close_browser()
 
 
+def validate_condtion_of_privacy_link():
+    amazon = Amazon()
+    amazon.open_browser_and_navigate_to_amazon_sign_in_url()
+    amazon_sign_in = SignIn(amazon.driver)
+    amazon_sign_in.click_privacy_notice_link()
+    current_page= amazon.driver.current_window_handle
+    new_window= None
+    for handle in amazon.driver.window_handles:
+        if handle!= current_page:
+            new_window=handle
+            break
+    amazon_sign_in.driver.switch_to.window(new_window)
+    assert "468496" in amazon.get_current_url()
+    amazon.close_browser()
+
+
+validate_condtion_of_privacy_link()
+sleep(2)
+validate_condtion_of_use_link()
+sleep(2)
 validate_create_your_amazon_account()
 sleep(2)
-# validate_need_help_forgot_password_and_other_issues()
-# sleep(2)
-# find_email_field_and_click_continue_button()
-# sleep(2)
-# find_amazon_logo()
+validate_need_help_forgot_password_and_other_issues()
+sleep(2)
+find_email_field_and_click_continue_button()
+sleep(2)
+validate_amazon_logo()
