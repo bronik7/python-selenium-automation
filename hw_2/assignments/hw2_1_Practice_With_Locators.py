@@ -40,41 +40,42 @@ def validate_create_your_amazon_account():
     assert "register" in amazon.get_current_url()
     amazon.close_browser()
 
-def validate_condtion_of_use_link():
+
+def validate_condition_of_use_link():
     amazon = Amazon()
     amazon.open_browser_and_navigate_to_amazon_sign_in_url()
     amazon_sign_in = SignIn(amazon.driver)
     amazon_sign_in.click_get_condition_of_use_link()
-    current_page= amazon.driver.current_window_handle
-    new_window= None
+    current_page = amazon.driver.current_window_handle
+    new_window = None
     for handle in amazon.driver.window_handles:
-        if handle!= current_page:
-            new_window=handle
+        if handle != current_page:
+            new_window = handle
             break
     amazon_sign_in.driver.switch_to.window(new_window)
-    assert "508088" in amazon.get_current_url() # same url as condition of privacy different reference id
+    assert "508088" in amazon.get_current_url()  # same url as condition of privacy different reference id
     amazon.close_browser()
 
 
-def validate_condtion_of_privacy_link():
+def validate_condition_of_privacy_link():
     amazon = Amazon()
     amazon.open_browser_and_navigate_to_amazon_sign_in_url()
     amazon_sign_in = SignIn(amazon.driver)
     amazon_sign_in.click_privacy_notice_link()
-    current_page= amazon.driver.current_window_handle
-    new_window= None
+    current_page = amazon.driver.current_window_handle
+    new_window = None
     for handle in amazon.driver.window_handles:
-        if handle!= current_page:
-            new_window=handle
+        if handle != current_page:
+            new_window = handle
             break
     amazon_sign_in.driver.switch_to.window(new_window)
-    assert "468496" in amazon.get_current_url() # same url as condition of use different reference id
+    assert "468496" in amazon.get_current_url()  # same url as condition of use different reference id
     amazon.close_browser()
 
 
-validate_condtion_of_privacy_link()
+validate_condition_of_privacy_link()
 sleep(2)
-validate_condtion_of_use_link()
+validate_condition_of_use_link()
 sleep(2)
 validate_create_your_amazon_account()
 sleep(2)
