@@ -7,8 +7,9 @@ def logged_out_user_sees_sign_in_page_when_clicking_orders():
     amazon.open_browser_and_naviate_to_amazon()
     amazon.help_from_left_menu_click()
     amazon_help = AmazonHelp(amazon.driver)
-    amazon_help.your_orders_click()
-    assert "signin" in amazon.driver.current_url
+    amazon_help.help_search_text_box_search("Cancel order")
+    amazon_help.go_button_click()
+    assert "Cancel Items or Orders" in amazon_help.driver.find_element_by_xpath(amazon_help.CancelItemsOrOrdersLink).text
     amazon.close_browser()
 
 
